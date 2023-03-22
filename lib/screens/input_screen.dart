@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'grid_screen.dart';
+
 class InputScreen extends StatelessWidget {
   const InputScreen({super.key});
 
@@ -74,7 +76,15 @@ class InputBody extends StatelessWidget {
                 );
               }
               if (content.length == (row * col)) {
-                // navigate to second page
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => GridScreen(
+                      row: row,
+                      col: col,
+                      content: content,
+                    ),
+                  ),
+                );
               }
             },
             style: ElevatedButton.styleFrom(
