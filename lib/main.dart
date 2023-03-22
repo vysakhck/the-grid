@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rive_splash_screen/rive_splash_screen.dart';
 import 'package:the_grid/screens/input_screen.dart';
 
@@ -12,9 +13,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'The Grid',
       theme: ThemeData(
+        primarySwatch: Colors.grey,
         primaryColor: Colors.grey[900],
+        textTheme: GoogleFonts.workSansTextTheme().copyWith(
+          headline6: TextStyle(
+            color: Colors.grey[900],
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ),
       home: Container(
         color: Colors.white,
