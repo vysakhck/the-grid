@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive_splash_screen/rive_splash_screen.dart';
+import 'package:the_grid/screens/input_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,9 +20,7 @@ class MyApp extends StatelessWidget {
         color: Colors.white,
         child: SplashScreen.navigate(
           name: 'assets/the_grid.riv',
-          next: (_) => Container(
-            color: Colors.grey[300],
-          ),
+          next: (_) => const InputScreen(),
           until: () => Future.delayed(const Duration(microseconds: 2400)),
           startAnimation: 'light_up',
         ),
