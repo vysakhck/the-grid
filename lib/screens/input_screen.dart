@@ -26,6 +26,7 @@ class InputScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: InputBody(),
+      resizeToAvoidBottomInset: false,
     );
   }
 }
@@ -107,7 +108,7 @@ class InputBody extends StatelessWidget {
     required TextEditingController controller,
   }) {
     TextStyle? headline6 = Theme.of(ctx).textTheme.headline6;
-
+    Size size = MediaQuery.of(ctx).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -120,7 +121,7 @@ class InputBody extends StatelessWidget {
           children: [
             if (icon != null) SvgPicture.asset(icon, height: 48),
             SizedBox(
-              width: icon == null ? 368 : 128,
+              width: icon == null ? size.width - 64 : 128,
               child: TextField(
                 textAlignVertical: TextAlignVertical.top,
                 maxLines: icon == null ? 8 : 1,
