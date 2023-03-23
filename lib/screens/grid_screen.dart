@@ -55,21 +55,21 @@ class _GridScreenState extends State<GridScreen> {
   }
 
   Column _buildGrid() {
-    int row = widget.row;
-    int col = widget.col;
+    int rows = widget.row;
+    int cols = widget.col;
 
-    final grid = _generateGrid(row, col);
+    final grid = _generateGrid(rows, cols);
     final result = _searchInGrid(grid, query);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        for (int i = 0; i < row; i++)
+        for (int i = 0; i < rows; i++)
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              for (int j = 0; j < row; j++)
+              for (int j = 0; j < cols; j++)
                 _buildGridContainer(
                     grid[i][j], result.any((list) => listEquals(list, [i, j])))
             ],
@@ -108,7 +108,7 @@ class _GridScreenState extends State<GridScreen> {
     final grid = List.generate(rows, (_) => List.generate(cols, (_) => ''));
     for (int row = 0; row < rows; row++) {
       for (int col = 0; col < cols; col++) {
-        grid[row][col] = chars[rows * row + col];
+        grid[row][col] = chars[cols * row + col];
       }
     }
     return grid;
@@ -208,12 +208,13 @@ class InputFab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           color: Colors.white,
-          width: 256,
+          width: size.width - 160,
           child: TextField(
             controller: _controller,
             decoration: const InputDecoration(
